@@ -1,5 +1,4 @@
-import CardProduct from '../../components/CardProduct';
-import Header from '../../components/Header';
+import { Footer, Header, CardProduct } from '../../components/index';
 
 const HomePage = () => {
     return (
@@ -13,12 +12,18 @@ const HomePage = () => {
                     <h1 className="text-center text-3xl">NOSSOS PRODUTOS</h1>
                     <h4 className="text-center">O MELHOR PARA OS MELHORES!</h4>
                 </div>
-                <div className="flex flex-row flex-wrap gap-4 gap-y-8 justify-center min-970:justify-start py-10">
+                <div className="grid grid-cols-5 gap-4 py-10 animate-[toTop_.7s_.2s_backwards]">
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
+                    <CardProduct />
                     <CardProduct />
                 </div>
-                <footer className="w-full bg-[#34261D] flex items-center justify-center p-5 animate-[toTop_.7s_.3s_backwards]">
-                    <p className="text-slate-50">©Criado por Edilson Almeida!</p>
-                </footer>
+                <Footer />
             </div>
         </div>
     )
