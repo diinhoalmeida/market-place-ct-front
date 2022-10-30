@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       boxShadow: {
-        'box-shadow-cards': 'rgba(0, 0, 0, 0.35) 0px 5px 15px'
+        'box-shadow-cards': 'rgba(0, 0, 0, 0.35) 0px 5px 15px',
+        'box-shadow-card-product-page': 'rgba(0, 0, 0, 0.16) 0px 1px 4px'
       },
       keyframes: {
         fromTop: {
@@ -33,13 +34,33 @@ module.exports = {
       animation: {
         fromTop: 'fromTop 0.7s .2s backwards',
         toTop: 'toTop'
-      }}
+      }},
+      gridTemplateAreas: {
+        'xl-grid': [
+          'product data indications'
+        ],
+        'lg-grid': [
+          'product data',
+          'indications indications'
+        ],
+        'md-grid': [
+          'product',
+          'data',
+          'indications'
+        ],
+      }
     },
     screens: {
+      'min-740': '740px',
+      'min-800': '800px',
       'min-970': '970px',
+      'min-1105': '1105px',
       'min-1145': '1145px',
+      'min-1275': '1275px',
       'xl': '1280px'
     }
   },
-  plugins: [],
+  plugins: [
+    require('@savvywombat/tailwindcss-grid-areas')
+  ],
 }

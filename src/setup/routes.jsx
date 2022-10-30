@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes as Routed, Route } from "react-router-dom";
-import { Login, Loja, ProductPage } from '../screens/index';
+import { Login, Loja, MarketPage, ProductPage } from '../screens/index';
 
 const Routes = () => {
    return(  
@@ -7,6 +7,7 @@ const Routes = () => {
             <Routed>
                 <Route element={<Login />} path="/" />
                 <Route element={<Loja />}  path="/loja" />
+                <Route element={<MarketPage />}  path="/marketpage" />
                 <Route element={<ProductPage />}  path="/productpage" />
             </Routed>
        </BrowserRouter>

@@ -1,5 +1,6 @@
 import Login from './HomePage/index';
 import Loja from './Loja/index';
-import ProductPage from './MarketPage/index';
+import MarketPage from './MarketPage/index';
+import ProductPage from './ProductPage';
 
-export { Login, Loja, ProductPage };
+export { Login, Loja, MarketPage, ProductPage };

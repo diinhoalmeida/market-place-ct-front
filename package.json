@@ -26,6 +26,7 @@
     "yup": "^0.32.11"
   },
   "devDependencies": {
+    "@savvywombat/tailwindcss-grid-areas": "^2.1.0",
     "@tailwindcss/line-clamp": "^0.4.2",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.17",

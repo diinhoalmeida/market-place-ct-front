@@ -145,15 +145,15 @@ const ProductPage = () => {
                         </div>
                     </aside>
                     <div className="grid grid-cols-5 gap-4 p-2">
-                        <CardProduct />
-                        <CardProduct />
-                        <CardProduct />
-                        <CardProduct />
-                        <CardProduct />
-                        <CardProduct />
-                        <CardProduct />
-                        <CardProduct />
-                        <CardProduct />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform"/>
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
                     </div>
                 </div>
                 <Footer />
