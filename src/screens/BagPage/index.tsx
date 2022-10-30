@@ -2,7 +2,7 @@ import { Trash } from "phosphor-react";
 import { Footer, Header } from "../../components";
 import ButtonConfirm from "../../components/ButtonConfirm";
 
-const CheckoutPage = () => {
+const BagPage = () => {
     return (
         <div className="w-screen flex justify-center px-14">
             <div className="flex flex-col xl:w-[1280px] w-full justify-center">
@@ -58,4 +58,4 @@ const CheckoutPage = () => {
     )
 }
 
-export default CheckoutPage;
+export default BagPage;

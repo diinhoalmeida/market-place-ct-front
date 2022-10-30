@@ -2,6 +2,6 @@ import HomePage from './HomePage/index';
 import Loja from './Loja/index';
 import MarketPage from './MarketPage/index';
 import ProductPage from './ProductPage';
-import CheckoutPage from './CheckoutPage';
+import BagPage from './BagPage';
 
-export { HomePage, Loja, MarketPage, ProductPage, CheckoutPage };
+export { HomePage, Loja, MarketPage, ProductPage, BagPage };
