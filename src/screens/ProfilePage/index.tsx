@@ -1,9 +1,11 @@
 import { NotePencil } from "phosphor-react";
 import { useState } from "react";
 import { CardSignature, Footer, Header, ModalUpdateSignature } from "../../components";
+import { useParams } from 'react-router-dom';
 
 const ProfilePage = () => {
     const [openModalUpdateAssignature, setOpenModalupdateAssignature] = useState<boolean>(false);
+    let { id }: any = useParams();
 
     return (
         <div className="w-screen flex justify-center px-14">

@@ -10,7 +10,7 @@ const Routes = () => {
                 <Route element={<ProductPage />}  path="/productpage" />
                 <Route element={<BagPage />}  path="/bagpage" />
                 <Route element={<CheckoutPage />}  path="/checkoutpage" />
-                <Route element={<ProfilePage />}  path="/profilepage" />
+                <Route element={<ProfilePage />}  path="/profilepage/:id" />
             </Routed>
        </BrowserRouter>
    )

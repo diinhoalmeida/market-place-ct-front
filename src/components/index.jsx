@@ -7,5 +7,9 @@ import CardBagPage from './CardBagPage';
 import ModalUpdateSignature from './ModalUpdateAssignatures';
 import Assinaturas from './Assinaturas';
 import CardSignature from './CardAssinagturePage';
+import ModalLogin from './ModalLogin';
+import ModalCadastro from './ModalCadastro';
+import ModalProfile from './ModalProfile';
+import InputForm from './InputForm';
 
-export { Input, Header, Footer, CardProduct, DrawerComponent, CardBagPage, ModalUpdateSignature, Assinaturas, CardSignature };
+export { Input, Header, Footer, CardProduct, DrawerComponent, CardBagPage, ModalUpdateSignature, Assinaturas, CardSignature, ModalLogin, ModalCadastro, ModalProfile, InputForm };
