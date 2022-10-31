@@ -59,6 +59,7 @@ module.exports = {
       }
     },
     screens: {
+      'min-600': '600px',
       'min-740': '740px',
       'min-800': '800px',
       'min-970': '970px',
