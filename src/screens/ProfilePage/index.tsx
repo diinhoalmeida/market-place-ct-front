@@ -1,11 +1,35 @@
 import { NotePencil } from "phosphor-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { CardSignature, Footer, Header, ModalUpdateSignature } from "../../components";
 import { useParams } from 'react-router-dom';
+import axios from "axios";
+
+export interface ProfileDataProps {
+    id: string;
+    nickName: string;
+    createdAt: string;
+    email: string;
+    signature: string[];
+}
 
 const ProfilePage = () => {
     const [openModalUpdateAssignature, setOpenModalupdateAssignature] = useState<boolean>(false);
+    const [profileData, setProfileData] = useState<ProfileDataProps>({} as ProfileDataProps)
     let { id }: any = useParams();
+
+    const handleProfileData = async () => {
+        try {
+            const getProfileData = await axios.get(`http://localhost:3000/conta/${id}/dados`)
+
+            setProfileData(getProfileData.data);
+        } catch (err: any) {
+            alert(err.response.data)
+        }
+    }
+
+    useEffect(() => {
+        handleProfileData();
+    }, [])
 
     return (
         <div className="w-screen flex justify-center px-14">
@@ -24,8 +48,8 @@ const ProfilePage = () => {
                             </div>
                         </div>
                         <div>
-                            <CardSignature imageCard={'/cha-assinatura.jpeg'}/>
-                            <CardSignature imageCard={'/coffee-assinatura.jpeg'}/>
+                            <CardSignature imageCard={'/cha-assinatura.jpeg'} profileData={profileData} type="cha"/>
+                            <CardSignature imageCard={'/coffee-assinatura.jpeg'} profileData={profileData} type="coffee"/>
                         </div>
                     </section>
                 </main>
