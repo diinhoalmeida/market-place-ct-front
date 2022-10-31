@@ -3,7 +3,7 @@ interface CardBagPageProps {
     imageCard?: string;
 }
 
-const CardAssignature = (props: CardBagPageProps) => {
+const CardSignature = (props: CardBagPageProps) => {
     return (
         <div className="flex flex-row w-full justify-between items-center py-2 border-b border-[rgba(0, 0, 0, 0.16)]">
             <div className="flex flex-row items-center gap-4">
@@ -18,4 +18,4 @@ const CardAssignature = (props: CardBagPageProps) => {
     )
 }
 
-export default CardAssignature;
+export default CardSignature;

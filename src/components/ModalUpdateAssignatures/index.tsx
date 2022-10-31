@@ -1,13 +1,13 @@
 import { X } from "phosphor-react";
 import { useEffect } from "react";
-import { Assinaturas, CardAssignature } from "..";
+import { Assinaturas, CardSignature } from "..";
 import ButtonConfirm from "../ButtonConfirm";
 
-interface ModalUpdateAssignaturesProps {
+interface ModalUpdateSignatureProps {
     setOpenModalupdateAssignature: (arg: boolean) => void;
 }
 
-const ModalUpdateAssignatures = (props: ModalUpdateAssignaturesProps) => {
+const ModalUpdateSignature = (props: ModalUpdateSignatureProps) => {
     useEffect(() => {
         const close = (e: any) => {
           if(e.keyCode === 27){
@@ -27,11 +27,11 @@ const ModalUpdateAssignatures = (props: ModalUpdateAssignaturesProps) => {
                 </div>
                 <div className="grid grid-cols-1 min-600:grid-cols-2 gap-4 border-y pb-4 border-[rgba(0, 0, 0, 0.16)]">
                     <div>
-                        <CardAssignature imageCard="/cha-assinatura.jpeg"/>
+                        <CardSignature imageCard="/cha-assinatura.jpeg"/>
                         <Assinaturas/>
                     </div>
                     <div>
-                        <CardAssignature imageCard="/coffee-assinatura.jpeg"/>
+                        <CardSignature imageCard="/coffee-assinatura.jpeg"/>
                         <Assinaturas />
                     </div>
                 </div>
@@ -43,4 +43,4 @@ const ModalUpdateAssignatures = (props: ModalUpdateAssignaturesProps) => {
     )
 }
 
-export default ModalUpdateAssignatures;
+export default ModalUpdateSignature;

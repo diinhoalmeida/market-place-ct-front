@@ -12,11 +12,7 @@ const ProductPage = () => {
                 <Header />
                 <div className="bg-white w-full p-4 rounded-2xl mb-10">
                     <div className="grid grid-areas-md-grid min-970:grid-areas-lg-grid min-1105:grid-areas-xl-grid gap-4 grid-cols-1 min-1105:grid-cols-3 min-970:grid-cols-2 pb-10">
-                        <div className="flex min-1275:flex-row min-1275:justify-start justify-between flex-col-reverse grid-in-product">
-                            <div className="flex flex-row min-1275:flex-col">
-                                <img src={'https://www.imperialtea.com/wp-content/uploads/2021/02/ITC3117.jpg'} alt="https://www.imperialtea.com/wp-content/uploads/2021/02/ITC3117.jpg" className="w-[70px] h-[70px] rounded-xl"/>
-                                <img src={'https://www.imperialtea.com/wp-content/uploads/2021/02/ITC3117.jpg'} alt="https://www.imperialtea.com/wp-content/uploads/2021/02/ITC3117.jpg" className="w-[70px] h-[70px] rounded-xl"/>
-                            </div>
+                        <div className="flex min-1275:flex-row min-1275:justify-start justify-center grid-in-product">
                             <img src={'https://www.imperialtea.com/wp-content/uploads/2021/02/ITC3117.jpg'} alt="https://www.imperialtea.com/wp-content/uploads/2021/02/ITC3117.jpg" className="max-w-[300px] max-h-[300px] rounded-xl"/>
                         </div>
                         <div className="flex flex-col gap-4 grid-in-data justify-between">

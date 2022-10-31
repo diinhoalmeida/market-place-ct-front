@@ -4,8 +4,8 @@ import CardProduct from './CardProduct';
 import Header from './Header';
 import DrawerComponent from './DrawerComponent';
 import CardBagPage from './CardBagPage';
-import ModalUpdateAssignatures from './ModalUpdateAssignatures';
+import ModalUpdateSignature from './ModalUpdateAssignatures';
 import Assinaturas from './Assinaturas';
-import CardAssignature from './CardAssinagturePage';
+import CardSignature from './CardAssinagturePage';
 
-export { Input, Header, Footer, CardProduct, DrawerComponent, CardBagPage, ModalUpdateAssignatures, Assinaturas, CardAssignature };
+export { Input, Header, Footer, CardProduct, DrawerComponent, CardBagPage, ModalUpdateSignature, Assinaturas, CardSignature };

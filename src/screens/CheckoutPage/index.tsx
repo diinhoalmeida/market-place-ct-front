@@ -65,8 +65,8 @@ const CheckoutPage = () => {
                                 </div>
                             </div>
                             <div className="w-full">
-                                <label htmlFor="add-infos">Indicações adicionais para entregar suas compras neste endereço. (opcional)</label>
-                                <textarea id="add-infos" name="add-infos" className="bg-white w-full shadow-box-shadow-card-product-page rounded text-sm p-2 placeholder:text-zinc-500 appearance-none" placeholder="Casa de portão prata, muro branco, numero 28 na parede." />    
+                                <label htmlFor="infos">Indicações adicionais para entregar suas compras neste endereço. (opcional)</label>
+                                <textarea id="infos" name="infos" className="bg-white w-full shadow-box-shadow-card-product-page rounded text-sm p-2 placeholder:text-zinc-500 appearance-none" placeholder="Casa de portão prata, muro branco, numero 28 na parede." />    
                             </div>
                             <div className="flex flex-col">
                                 <label htmlFor="file" className="form-label">Anexar Documento</label>

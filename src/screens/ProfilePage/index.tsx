@@ -1,6 +1,6 @@
 import { NotePencil } from "phosphor-react";
 import { useState } from "react";
-import { CardAssignature, Footer, Header, ModalUpdateAssignatures } from "../../components";
+import { CardSignature, Footer, Header, ModalUpdateSignature } from "../../components";
 
 const ProfilePage = () => {
     const [openModalUpdateAssignature, setOpenModalupdateAssignature] = useState<boolean>(false);
@@ -22,14 +22,14 @@ const ProfilePage = () => {
                             </div>
                         </div>
                         <div>
-                            <CardAssignature imageCard={'/cha-assinatura.jpeg'}/>
-                            <CardAssignature imageCard={'/coffee-assinatura.jpeg'}/>
+                            <CardSignature imageCard={'/cha-assinatura.jpeg'}/>
+                            <CardSignature imageCard={'/coffee-assinatura.jpeg'}/>
                         </div>
                     </section>
                 </main>
                 <Footer />
             </div>
-            {openModalUpdateAssignature && <ModalUpdateAssignatures setOpenModalupdateAssignature={setOpenModalupdateAssignature}/>}
+            {openModalUpdateAssignature && <ModalUpdateSignature setOpenModalupdateAssignature={setOpenModalupdateAssignature}/>}
         </div>
     )
 }
