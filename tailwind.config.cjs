@@ -2,7 +2,8 @@
 module.exports = {
   content: [
     './src/**/*.tsx',
-    "./index.html" 
+    "./index.html",
+    'node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}'
   ],
   theme: {
     extend: {
@@ -68,6 +69,7 @@ module.exports = {
     }
   },
   plugins: [
-    require('@savvywombat/tailwindcss-grid-areas')
+    require('@savvywombat/tailwindcss-grid-areas'),
+    require('flowbite/plugin')
   ],
 }

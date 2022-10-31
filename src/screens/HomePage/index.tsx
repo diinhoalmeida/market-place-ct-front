@@ -12,7 +12,7 @@ const HomePage = () => {
                     <h1 className="text-center text-3xl">NOSSOS PRODUTOS</h1>
                     <h4 className="text-center">O MELHOR PARA OS MELHORES!</h4>
                 </div>
-                <div className="grid grid-cols-6 gap-4 py-10 animate-[toTop_.7s_.2s_backwards]">
+                <div className="grid grid-cols-6 gap-4 pt-10 animate-[toTop_.7s_.2s_backwards]">
                     <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform"/>
                     <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform"/>
                     <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform"/>
