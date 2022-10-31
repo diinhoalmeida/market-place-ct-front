@@ -48,6 +48,13 @@ module.exports = {
           'data',
           'indications'
         ],
+        'xl-grid-checkout-page': [
+          'form details'
+        ],
+        'md-grid-checkout-page': [
+          'details',
+          'form'
+        ]
       }
     },
     screens: {

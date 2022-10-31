@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes as Routed, Route } from "react-router-dom";
-import { MarketPage, ProductPage, BagPage, HomePage } from '../screens/index';
+import { MarketPage, ProductPage, BagPage, HomePage, CheckoutPage } from '../screens/index';
 
 const Routes = () => {
    return(  
@@ -9,6 +9,7 @@ const Routes = () => {
                 <Route element={<MarketPage />}  path="/marketpage" />
                 <Route element={<ProductPage />}  path="/productpage" />
                 <Route element={<BagPage />}  path="/bagpage" />
+                <Route element={<CheckoutPage />}  path="/checkoutpage" />
             </Routed>
        </BrowserRouter>
    )
