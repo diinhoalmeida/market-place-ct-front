@@ -1,39 +1,46 @@
-import { Input } from '../../components/index';
+import { useEffect, useState } from 'react';
+import { Footer, Header, CardProduct } from '../../components/index';
+import { ProductDataProps } from '../ProductPage';
+import axios from "axios";
 
 const HomePage = () => {
+    const [productsData, setProductsData] = useState<ProductDataProps[]>([]);
+
+    const handleProdutos = async () => {
+        try {
+            const produtosData = await axios.get('http://localhost:3000/produtos');
+            setProductsData(produtosData.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        handleProdutos();   
+    }, [])
+
     return (
-        <div className="w-screen flex justify-center px-14">
-            <div className="flex flex-col xl:w-[1280px] w-full justify-center">
-                <div className="flex flex-row justify-between items-center h-[100px]">
-                    <img src={'/market-logo.png'} alt="logo da pagina" className="h-[250px] relative -left-10"/>
-                    <div className="flex flex-row justify-end items-center gap-10">
-                        <div className="flex flex-row items-center gap-5">
-                            <a>Home</a>
-                            <a>Products</a>
-                        </div>
-                        <div className=""/>
-                        <div className="flex flex-row items-center gap-5">
-                            <div className="w-2 h-2 bg-black"></div>
-                            <div className="w-2 h-2 bg-black"></div>
-                            <div className="w-2 h-2 bg-black"></div>
-                        </div>
-                    </div>
-                </div>
-                <div className="w-full h-[400px] overflow-hidden">
+        <div className="w-screen flex justify-center px-14 min-h-screen">
+            <div className="flex flex-col xl:w-[1280px] w-full justify-between h-full">
+                <Header />
+                <div className="w-full h-[400px] overflow-hidden animate-[toTop_.7s_.1s_backwards] rounded-2xl">
                     <img src={'/image-home.jpeg'} alt="coffee and tea and cups on wood table" className='object-fill'/>
                 </div>
-                <div className="flex flex-col gap-2 p-10">
+                <div className="flex flex-col gap-2 pt-10">
                     <h1 className="text-center text-3xl">NOSSOS PRODUTOS</h1>
                     <h4 className="text-center">O MELHOR PARA OS MELHORES!</h4>
                 </div>
-                <div className="grid grid-cols-2 min-880:grid-cols-3 min-1145:grid-cols-4 gap-4">
-                    <div className="bg-black h-[300px]">s</div>
-                    <div className="bg-black h-[300px]">s</div>
-                    <div className="bg-black h-[300px]">s</div>
-                    <div className="bg-black h-[300px]">s</div>
-                    <div className="bg-black h-[300px]">s</div>
-                    <div className="bg-black h-[300px]">s</div>
+                <div className="grid grid-cols-2 min-600:grid-cols-3 min-800:grid-cols-4 min-970:grid-cols-5 min-1105:grid-cols-6 gap-4 pt-10 animate-[toTop_.7s_.2s_backwards]">
+                    {productsData.map(item => (
+                        <CardProduct 
+                        urlBanner={item.photoUrl}
+                        idItem={item.id}
+                        nameItem={item.name}
+                        priceItem={item.price}
+                    />
+                    ))}
                 </div>
+                <Footer />
             </div>
         </div>
     )

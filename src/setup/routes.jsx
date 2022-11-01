@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes as Routed, Route } from "react-router-dom";
-import { Login, Loja } from '../screens/index';
+import { MarketPage, ProductPage, BagPage, HomePage, CheckoutPage, ProfilePage } from '../screens/index';
 
 const Routes = () => {
    return(  
        <BrowserRouter>
             <Routed>
-                <Route element={<Login />} path="/" />
-                <Route element={<Loja />}  path="/loja" />
+                <Route element={<HomePage />} path="/" />
+                <Route element={<MarketPage />}  path="/marketpage" />
+                <Route element={<ProductPage />}  path="/productpage/:id" />
+                <Route element={<BagPage />}  path="/bagpage" />
+                <Route element={<CheckoutPage />}  path="/checkoutpage" />
+                <Route element={<ProfilePage />}  path="/profilepage/:id" />
             </Routed>
        </BrowserRouter>
    )
