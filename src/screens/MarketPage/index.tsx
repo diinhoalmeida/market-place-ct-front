@@ -1,7 +1,8 @@
 import * as CheckBox from '@radix-ui/react-checkbox';
 import { Check } from 'phosphor-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Footer, Header, CardProduct } from '../../components/index';
+import axios from "axios";
 
 interface Filter {
     all: boolean;
@@ -9,12 +10,13 @@ interface Filter {
     coffee: boolean;
 }
 
-const ProductPage = () => {
+const MarketPage = () => {
     const [selectFilterAside, setSelectFilterAside] = useState<Filter>({
         all: true,
         coffee: true,
         tea: true
     });
+    const [productsData, setProductsData] = useState([]);
 
     const handleASideFilter = (checked: boolean, type: string) => {
         var filterAside = {...selectFilterAside};
@@ -40,6 +42,19 @@ const ProductPage = () => {
         }
         setSelectFilterAside(filterAside);  
     }
+
+    const handleProdutos = async () => {
+        try {
+            const produtosData = await axios.get('http://localhost:3000/produtos');
+            setProductsData(produtosData.data);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    useEffect(() => {
+        handleProdutos();
+    }, [])
 
     return (
         <div className="w-screen flex justify-center px-14 min-h-screen">
@@ -133,7 +148,7 @@ const ProductPage = () => {
                                 <p>Café</p>
                             </div>
                             <select
-                                disabled={!selectFilterAside.coffee || selectFilterAside.all}
+                                disabled={!selectFilterAside.coffee}
                                 name="coffee"
                                 id="coffee"
                                 className="bg-white rounded text-sm p-2 placeholder:text-[#750204] appearance-none"
@@ -145,15 +160,15 @@ const ProductPage = () => {
                         </div>
                     </aside>
                     <div className="grid grid-cols-2 min-800:grid-cols-3 min-970:grid-cols-4 min-1105:grid-cols-5 gap-4 p-2">
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform"/>
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
-                        <CardProduct className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform" />
+                        {productsData.map((item: any) => (
+                            <CardProduct 
+                                urlBanner={item.photoUrl}
+                                idItem={item.id}
+                                className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform"
+                                nameItem={item.name}
+                                priceItem={item.price}
+                            />
+                        ))}
                     </div>
                 </div>
                 <Footer />
@@ -162,4 +177,4 @@ const ProductPage = () => {
     )
 }
 
-export default ProductPage;
+export default MarketPage;
