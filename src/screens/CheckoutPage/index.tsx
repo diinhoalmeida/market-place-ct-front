@@ -1,17 +1,31 @@
-import { FormEvent } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import { Footer, Header } from "../../components";
 import ButtonConfirm from "../../components/ButtonConfirm";
 import InputForm from "../../components/InputForm";
+import Context from "../../context/context";
+import { FormatCurrency } from "../../utils/formatCurrency";
 
 const CheckoutPage = () => {
+    const { signature, handleProfileData, cartQuantity } = useContext(Context);
+    const [originalValueBuy, setOriginalValueBuy] = useState<string>(FormatCurrency(0));
+    const [valueTotalBuy, setValueTotalBuy] = useState<string>(FormatCurrency(0));
+
     const handleFormBuy = (event: FormEvent) => {
         event.preventDefault();
     
         const formData = new FormData(event.target as HTMLFormElement);
         const data = Object.fromEntries(formData);
 
-        console.log(data);
     }
+
+    useEffect(() => {
+        const getUserId = localStorage.getItem('token');
+        const valueTotal = localStorage.getItem('valueTotal');
+        const originalValue = localStorage.getItem('originalValue');
+        if (valueTotal) setValueTotalBuy(valueTotal);
+        if (originalValue) setOriginalValueBuy(originalValue);
+        if (getUserId) handleProfileData(getUserId);
+    }, [])
 
     return (
         <div className="w-screen flex justify-center px-14">
@@ -84,13 +98,21 @@ const CheckoutPage = () => {
                             <h1 className="text-xl font-bold m-0">Resumo de Compra</h1>
                             <div className="border-b border-t border-[rgba(0, 0, 0, 0.16)] py-4 my-2">
                                 <div className="flex justify-between items-center">
-                                    <p>Produtos(6)</p>
-                                    <p>R$50,50</p>
+                                    <p>Produtos({cartQuantity})</p>
+                                    <p>{originalValueBuy}</p>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                    <p>Desconto em Chás</p>
+                                    <p>{signature.cha || 0}%</p>
+                                </div>
+                                <div className="flex justify-between items-center">
+                                    <p>Desconto em Cafés</p>
+                                    <p>{signature.coffee || 0}%</p>
                                 </div>
                             </div>
                             <div className="flex justify-between items-center">
                                 <p>Você pagará</p>
-                                <p>R$50,50</p>
+                                <p>{valueTotalBuy}</p>
                             </div>
                         </div>
                         <img src="/checkout-buy-page.jpeg" alt="" className="object-cover block rounded-2xl"/>

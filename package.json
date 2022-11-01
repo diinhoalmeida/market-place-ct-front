@@ -31,6 +31,7 @@
   "devDependencies": {
     "@savvywombat/tailwindcss-grid-areas": "^2.1.0",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "@types/jquery": "^3.5.14",
     "@types/node": "^18.7.18",
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",

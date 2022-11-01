@@ -164,7 +164,6 @@ const MarketPage = () => {
                             <CardProduct 
                                 urlBanner={item.photoUrl}
                                 idItem={item.id}
-                                className="overflow-hidden shadow-box-shadow-cards bg-white p-3 rounded-2xl hover:scale-[1.1] cursor-pointer transition-transform"
                                 nameItem={item.name}
                                 priceItem={item.price}
                             />

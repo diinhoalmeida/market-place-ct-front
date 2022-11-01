@@ -1,6 +1,4 @@
-import React from "react";
-
-import { UserContextProvider } from "./context";
+import { ContextProvider } from "./context";
 
 type Props = {
     children:
@@ -13,7 +11,7 @@ type Props = {
 const GlobalContext = (props: Props) => {
   return (
     <>
-      <UserContextProvider>{props.children}</UserContextProvider>;
+      <ContextProvider>{props.children}</ContextProvider>;
     </>
   );
 };

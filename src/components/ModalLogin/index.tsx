@@ -1,11 +1,12 @@
 import { Eye, EyeSlash, XCircle } from "phosphor-react";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, useContext, useEffect, useState } from "react";
 import ButtonConfirm from "../ButtonConfirm";
 import Input from "../Input";
 import {InputForm} from "../../components/index";
 import axios from "axios";
 import { useJwt } from "react-jwt";
 import { useNavigate } from "react-router-dom";
+import Context from "../../context/context";
 
 export interface ModalProfileProps {
     setModalSelect: (arg: string) => void;
@@ -16,6 +17,7 @@ const ModalLogin = (props: ModalProfileProps) => {
     const [eyeOpen, setEyeOpen] = useState<boolean>(true);
     const { decodedToken, isExpired, reEvaluateToken  }: any = useJwt('');
     const navigate = useNavigate();
+    const { handleProfileData } = useContext(Context);
 
     const changeEye = () => {
         const password = document.getElementById("senha");
@@ -34,8 +36,6 @@ const ModalLogin = (props: ModalProfileProps) => {
         const formData = new FormData(event.target as HTMLFormElement);
         const data = Object.fromEntries(formData);
 
-        console.log(data);
-
         try {
             await axios.post(`http://localhost:3000/login`,
                 {
@@ -43,6 +43,7 @@ const ModalLogin = (props: ModalProfileProps) => {
                     senha: data.senha
                 }
             ).then(res => {
+                console.log(res.data);
                 reEvaluateToken(res.data);
             })
 
@@ -54,6 +55,7 @@ const ModalLogin = (props: ModalProfileProps) => {
     useEffect(() => {
         if (decodedToken?.id) {
             localStorage.setItem('token', decodedToken?.id);
+            handleProfileData(decodedToken.id);
             navigate(`/profilepage/${decodedToken?.id}`);
         }
     }, [decodedToken])

@@ -72,6 +72,7 @@ module.exports = {
   },
   plugins: [
     require('@savvywombat/tailwindcss-grid-areas'),
-    require('flowbite/plugin')
+    require('flowbite/plugin'),
+    require('@tailwindcss/line-clamp'),
   ],
 }
