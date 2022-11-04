@@ -66,7 +66,7 @@ const ModalUpdateSignature = (props: ModalUpdateSignatureProps) => {
                     {constants.map(item => (
                         <div>
                             <CardSignature imageCard={item.imageCard} profileData={props.profileData} type={item.type}/>
-                            <Assinaturas signatureArray={signatureArray} setSignatureArray={setSignatureArray} signatures={props.signatures} type={item.type}/>
+                            <Assinaturas signatureArray={signatureArray} setSignatureArray={setSignatureArray} type={item.type}/>
                         </div>
                     ))}
                 </div>

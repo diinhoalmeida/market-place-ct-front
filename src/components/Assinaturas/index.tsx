@@ -2,10 +2,10 @@ import * as CheckBox from '@radix-ui/react-checkbox';
 import { Check } from 'phosphor-react';
 
 interface SingatureProps {
-    signatures: string[];
     type: "cha"  | "cafe";
     signatureArray: string[];
-    setSignatureArray: (arg: string[]) => void;
+    setSignatureArray?: (arg: string[]) => void;
+    page?: "product_page";
 }
 
 const Assinaturas = (props: SingatureProps) => {
@@ -65,7 +65,7 @@ const Assinaturas = (props: SingatureProps) => {
                 signatureSpread.splice(signatureSpread.indexOf(signatureSpread[indexOf]), 1, signature)    
             }
 
-            props.setSignatureArray(signatureSpread);
+            if (props.setSignatureArray) props.setSignatureArray(signatureSpread);
         } else if (arg === 'cafe') {
             var indexOf = 0;
 
@@ -82,14 +82,14 @@ const Assinaturas = (props: SingatureProps) => {
                 signatureSpread.splice(signatureSpread.indexOf(signatureSpread[indexOf]), 1, signature)    
             }
 
-            props.setSignatureArray(signatureSpread);
+            if (props.setSignatureArray) props.setSignatureArray(signatureSpread);
         }
         
     }
 
     return (
         <div className="grid grid-rows-3 gap-4">
-            <div onClick={() => handleUpdateSignatures(props.type, `standard_${props.type}`)} className="flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] cursor-pointer transition-transform">
+            <div onClick={() => !props.page && handleUpdateSignatures(props.type, `standard_${props.type}`)} className={`flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] ${!props.page && 'cursor-pointer'} transition-transform`}>
                 <div className="flex justify-center items-center w-[15%] border-r border-[rgba(0, 0, 0, 0.16)]">
                     <CheckBox.Root 
                         checked={handleCheckedBoxStandardOption(props.type)}
@@ -106,7 +106,7 @@ const Assinaturas = (props: SingatureProps) => {
                     <h3>Compra Padrão</h3>
                 </div>
             </div>
-            <div onClick={() => handleUpdateSignatures(props.type, `${props.type}_mensal`)} className="flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] cursor-pointer transition-transform">
+            <div onClick={() => !props.page && handleUpdateSignatures(props.type, `${props.type}_mensal`)} className={`flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] ${!props.page && 'cursor-pointer'} transition-transform`}>
                 <div className="flex justify-center items-center w-[15%] border-r border-[rgba(0, 0, 0, 0.16)]">
                     <CheckBox.Root 
                         checked={handleCheckedBoxSignatureMonthly(props.type)}
@@ -126,7 +126,7 @@ const Assinaturas = (props: SingatureProps) => {
                     <p>R$15</p>
                 </div>
             </div>
-            <div onClick={() => handleUpdateSignatures(props.type, `${props.type}_semanal`)} className="flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] cursor-pointer transition-transform">
+            <div onClick={() => !props.page && handleUpdateSignatures(props.type, `${props.type}_semanal`)} className={`flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] ${!props.page && 'cursor-pointer'} transition-transform`}>
                 <div className="flex justify-center items-center w-[15%] border-r border-[rgba(0, 0, 0, 0.16)]">
                     <CheckBox.Root 
                         checked={handleCheckedBoxSignatureWeekly(props.type)}
