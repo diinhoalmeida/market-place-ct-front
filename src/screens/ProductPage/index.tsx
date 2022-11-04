@@ -31,7 +31,7 @@ const ProductPage = () => {
     const [productData, setProductData] = useState<ProductDataProps>({} as ProductDataProps);
     const [qtd, setQtd] = useState<string>('1');
     const [priceProduct, setPriceProduct] = useState<string>();
-    const { increaseCartQuantity, handleProfileData, handleProducts, productsData } = useContext(Context);
+    const { increaseCartQuantity, handleProfileData, productsData } = useContext(Context);
 
     let { id }: any = useParams();
 
@@ -48,8 +48,6 @@ const ProductPage = () => {
     useEffect(() => {
         const getUserId = localStorage.getItem('token');
         const signatureArray: any = localStorage.getItem('signatureArray');
-
-        handleProducts();
         handleProductsData();
 
         if (getUserId) handleProfileData(getUserId);
@@ -58,7 +56,6 @@ const ProductPage = () => {
 
     useEffect(() => {
         setPriceProduct(FormatCurrency(productData.price * Number(qtd)));
-        console.log(productData);
     }, [productData])
 
     return (                                                                            
@@ -90,7 +87,8 @@ const ProductPage = () => {
                             <h2 className="text-xl font-bold">Quem viu este produto também comprou</h2>
                             <div className="grid min-1105:grid-cols-2 w-ful grid-cols-4 min-1105:grid-rows-2 gap-5">
                             {[...Array(4)].map((item: any, index:number) => (
-                                <CardProduct 
+                                <CardProduct    
+                                    key={index}
                                     urlBanner={productsData[index]?.photoUrl}
                                     idItem={productsData[index]?.id}
                                     nameItem={productsData[index]?.name}

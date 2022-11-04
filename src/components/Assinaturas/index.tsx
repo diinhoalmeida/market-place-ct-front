@@ -47,7 +47,6 @@ const Assinaturas = (props: SingatureProps) => {
 
     const handleUpdateSignatures = (arg: 'cha'  | 'cafe', signature: 'standard_cafe' | 'standard_cha' | 'cafe_mensal' | 'cafe_semanal' | 'cha_mensal' | 'cha_semanal') => {
         var signatureSpread = [...props.signatureArray];
-        console.log(signatureSpread);
         
         if (arg === 'cha') {
             var indexOf = 0;

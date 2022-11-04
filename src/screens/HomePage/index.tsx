@@ -31,13 +31,14 @@ const HomePage = () => {
                     <h4 className="text-center">O MELHOR PARA OS MELHORES!</h4>
                 </div>
                 <div className="grid grid-cols-2 min-600:grid-cols-3 min-800:grid-cols-4 min-970:grid-cols-5 min-1105:grid-cols-6 gap-4 pt-10 animate-[toTop_.7s_.2s_backwards]">
-                    {productsData.map(item => (
+                    {productsData.map((item, index:number) => (
                         <CardProduct 
-                        urlBanner={item.photoUrl}
-                        idItem={item.id}
-                        nameItem={item.name}
-                        priceItem={item.price}
-                    />
+                            key={index}
+                            urlBanner={item.photoUrl}
+                            idItem={item.id}
+                            nameItem={item.name}
+                            priceItem={item.price}
+                        />
                     ))}
                 </div>
                 <Footer />

@@ -5,6 +5,7 @@ import Context from "../../context/context";
 import { ProductDataProps } from "../../screens/ProductPage";
 import axios from "axios";
 import { FormatCurrency } from "../../utils/formatCurrency";
+import { useNavigate } from "react-router-dom";
 
 interface DrawerComponentProps {
     openBag: boolean;
@@ -12,9 +13,9 @@ interface DrawerComponentProps {
 }
 
 const DrawerComponent = (props: DrawerComponentProps) => {
-    const { cartQuantity, cartItems, removeFromCart } = useContext(Context);
+    const { cartQuantity, cartItems, removeFromCart, totalValueBuy } = useContext(Context);
     const [productsData, setProductsData] = useState<ProductDataProps[]>([] as ProductDataProps[]);
-    const [valueTotalBuy, setValueTotalBuy] = useState<string>(FormatCurrency(0));
+    const navigate = useNavigate();
 
     const handleProdutos = async () => {
         try {
@@ -27,8 +28,6 @@ const DrawerComponent = (props: DrawerComponentProps) => {
 
     useEffect(() => {
         handleProdutos();
-        const valueTotal = localStorage.getItem('valueTotal');
-        if (valueTotal) setValueTotalBuy(valueTotal);
         const close = (e: any) => {
           if(e.keyCode === 27){
             props.setOpenBag(false)
@@ -38,6 +37,10 @@ const DrawerComponent = (props: DrawerComponentProps) => {
       return () => window.removeEventListener('keydown', close)
     },[])
 
+    const handleBuyFinish = () => {
+        navigate(`/checkoutpage`);
+    }
+
     return (
         <div className="fixed top-0 z-40 h-full overflow-y-auto right-0 bg-white w-[500px] shadow-box-shadow-card-product-page" tabIndex={-1} aria-labelledby="drawer-label">
             <div className="flex flex-row justify-between items-center p-4">
@@ -45,11 +48,11 @@ const DrawerComponent = (props: DrawerComponentProps) => {
                 <X size={22} onClick={() => props.setOpenBag(false)} className="hover:hover:scale-[1.1] transition-transform cursor-pointer"/>
             </div>
             <div className="border-y border-[rgba(0, 0, 0, 0.16)] p-4 flex flex-col gap-2 overflow-y-auto max-h-full min-h-min">
-                {cartItems?.map((item: any) => {
+                {cartItems?.map((item: any, index: number) => {
                     const itemToMap: ProductDataProps | undefined = productsData.find(i => i.id === item.id);
                     if (!itemToMap) return null;
                     return (
-                        <div className="grid grid-cols-4 shadow-box-shadow-card-product-page p-1">
+                        <div key={index} className="grid grid-cols-4 shadow-box-shadow-card-product-page p-1">
                             <img src={`${itemToMap?.photoUrl}`} alt={`${itemToMap?.name}`} className="w-[70px] h-[70px] rounded-xl object-contain"/>
                             <div className="flex flex-col justify-center">
                                 <div className="flex flex-row items-baseline gap-1">
@@ -73,9 +76,9 @@ const DrawerComponent = (props: DrawerComponentProps) => {
             <div className="flex items-end flex-col gap-2 absolute p-4 bottom-0 w-full bg-white shadow-box-shadow-card-product-page">
                 <p className="text-xl font-bold m-0">
                     Total{" "}
-                    {valueTotalBuy}
+                    {totalValueBuy}
                 </p>
-                <ButtonConfirm className="hover:hover:scale-[1.05] transition-transform bg-[#E29279] py-2 px-4 rounded-lg text-white">
+                <ButtonConfirm onClick={() => handleBuyFinish()} className="hover:hover:scale-[1.05] transition-transform bg-[#E29279] py-2 px-4 rounded-lg text-white">
                     Finalizar Compra
                 </ButtonConfirm>
             </div>       

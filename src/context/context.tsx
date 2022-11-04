@@ -141,22 +141,26 @@ const totalValue = async () => {
     }, 0);
     const value = cartItems?.reduce((total, cartItem: any) => {
         const itemToMap: any = productsData.find(i => i.id === cartItem.id)
-        console.log(itemToMap?.product.name)
         if (itemToMap?.product.name === 'cha') {
           return total + ((itemToMap?.price - (itemToMap?.price * (signature.cha/100) || 0))) * cartItem?.quantity
         }
         return total + ((itemToMap?.price - (itemToMap?.price * (signature.coffee/100) || 0))) * cartItem?.quantity
     }, 0);
-    localStorage.setItem('valueTotal', FormatCurrency(value));
     localStorage.setItem('originalValue', FormatCurrency(originalValue));
+    localStorage.setItem('valueTotal', FormatCurrency(value));
     setTotalValueBuy(FormatCurrency(value));
+    return;
   }
-  setTotalValueBuy(FormatCurrency(0));
+  setTotalValueBuy(FormatCurrency(0)); 
 }
 
 useEffect(() => {
   totalValue();
 }, [cartItems])
+
+useEffect(() => {
+  handleProducts();
+}, [])
 
   return (
     <Context.Provider

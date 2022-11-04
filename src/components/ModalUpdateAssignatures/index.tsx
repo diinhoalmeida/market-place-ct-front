@@ -42,7 +42,6 @@ const ModalUpdateSignature = (props: ModalUpdateSignatureProps) => {
     },[])
 
     const handleUpdateSignaturesApi = async () => {
-        console.log('entrou')
         try {
             await axios.patch(`http://localhost:3000/updatesignatures/${props.idUser}`, {
                 signature: signatureArray
@@ -63,8 +62,8 @@ const ModalUpdateSignature = (props: ModalUpdateSignatureProps) => {
                     <X size={22} className="hover:hover:scale-[1.1] transition-transform cursor-pointer" onClick={() => props.setOpenModalupdateAssignature(false)}/>
                 </div>
                 <div className="grid grid-cols-1 min-600:grid-cols-2 gap-4 border-y pb-4 border-[rgba(0, 0, 0, 0.16)]">
-                    {constants.map(item => (
-                        <div>
+                    {constants.map((item, index:number) => (
+                        <div key={index}>
                             <CardSignature imageCard={item.imageCard} profileData={props.profileData} type={item.type}/>
                             <Assinaturas signatureArray={signatureArray} setSignatureArray={setSignatureArray} type={item.type}/>
                         </div>

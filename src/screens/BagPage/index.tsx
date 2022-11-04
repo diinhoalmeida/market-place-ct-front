@@ -2,6 +2,8 @@ import { Trash } from "phosphor-react";
 import { CardBagPage, Footer, Header } from "../../components";
 import ButtonConfirm from "../../components/ButtonConfirm";
 
+//IDEIA FUTURA
+
 const BagPage = () => {
     return (
         <div className="w-screen flex justify-center px-14">

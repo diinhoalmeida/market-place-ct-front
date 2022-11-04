@@ -6,7 +6,7 @@ import Context from "../../context/context";
 import { FormatCurrency } from "../../utils/formatCurrency";
 
 const CheckoutPage = () => {
-    const { signature, handleProfileData, cartQuantity } = useContext(Context);
+    const { signature, handleProfileData, cartQuantity, profileData } = useContext(Context);
     const [originalValueBuy, setOriginalValueBuy] = useState<string>(FormatCurrency(0));
     const [valueTotalBuy, setValueTotalBuy] = useState<string>(FormatCurrency(0));
 
@@ -15,6 +15,8 @@ const CheckoutPage = () => {
     
         const formData = new FormData(event.target as HTMLFormElement);
         const data = Object.fromEntries(formData);
+
+        alert('Compra realizada com sucesso!');
 
     }
 
@@ -103,11 +105,11 @@ const CheckoutPage = () => {
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <p>Desconto em Chás</p>
-                                    <p>{signature.cha || 0}%</p>
+                                    <p>{signature?.cha || 0}%</p>
                                 </div>
                                 <div className="flex justify-between items-center">
                                     <p>Desconto em Cafés</p>
-                                    <p>{signature.coffee || 0}%</p>
+                                    <p>{signature?.coffee || 0}%</p>
                                 </div>
                             </div>
                             <div className="flex justify-between items-center">

@@ -43,7 +43,6 @@ const ModalLogin = (props: ModalProfileProps) => {
                     senha: data.senha
                 }
             ).then(res => {
-                console.log(res.data);
                 reEvaluateToken(res.data);
             })
 

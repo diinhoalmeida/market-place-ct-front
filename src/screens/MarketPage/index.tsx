@@ -176,8 +176,9 @@ const MarketPage = () => {
                         </div>
                     </aside>
                     <div className="grid grid-cols-2 min-800:grid-cols-3 min-970:grid-cols-4 min-1105:grid-cols-5 gap-4 p-2">
-                        {productsData.map((item: any) => (
+                        {productsData.map((item: any, index: number) => (
                             <CardProduct 
+                                key={index}
                                 urlBanner={item.photoUrl}
                                 idItem={item.id}
                                 nameItem={item.name}
