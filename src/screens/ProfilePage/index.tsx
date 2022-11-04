@@ -1,8 +1,8 @@
 import { NotePencil } from "phosphor-react";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CardSignature, Footer, Header, ModalUpdateSignature } from "../../components";
 import { useParams } from 'react-router-dom';
-import axios from "axios";
+import Context from "../../context/context";
 
 export interface ProfileDataProps {
     id: string;
@@ -13,22 +13,12 @@ export interface ProfileDataProps {
 }
 
 const ProfilePage = () => {
+    const { handleProfileData, profileData } = useContext(Context);
     const [openModalUpdateAssignature, setOpenModalupdateAssignature] = useState<boolean>(false);
-    const [profileData, setProfileData] = useState<ProfileDataProps>({} as ProfileDataProps)
     let { id }: any = useParams();
 
-    const handleProfileData = async () => {
-        try {
-            const getProfileData = await axios.get(`http://localhost:3000/conta/${id}/dados`)
-
-            setProfileData(getProfileData.data);
-        } catch (err: any) {
-            alert(err.response.data)
-        }
-    }
-
     useEffect(() => {
-        handleProfileData();
+        handleProfileData(id);
     }, [])
 
     return (
@@ -49,13 +39,13 @@ const ProfilePage = () => {
                         </div>
                         <div>
                             <CardSignature imageCard={'/cha-assinatura.jpeg'} profileData={profileData} type="cha"/>
-                            <CardSignature imageCard={'/coffee-assinatura.jpeg'} profileData={profileData} type="coffee"/>
+                            <CardSignature imageCard={'/coffee-assinatura.jpeg'} profileData={profileData} type="cafe"/>
                         </div>
                     </section>
                 </main>
                 <Footer />
             </div>
-            {openModalUpdateAssignature && <ModalUpdateSignature setOpenModalupdateAssignature={setOpenModalupdateAssignature}/>}
+            {openModalUpdateAssignature && <ModalUpdateSignature profileData={profileData} setOpenModalupdateAssignature={setOpenModalupdateAssignature} signatures={profileData.signature} idUser={profileData.id}/>}
         </div>
     )
 }

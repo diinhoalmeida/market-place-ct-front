@@ -1,30 +1,41 @@
 import { ProfileDataProps } from "../../screens/ProfilePage";
+import { FormatCurrency } from "../../utils/formatCurrency";
 
 interface CardBagPageProps {
     activeQtd?: boolean;
     imageCard?: string;
     profileData: ProfileDataProps;
-    type: 'coffee' | 'cha';
+    type: 'cafe' | 'cha';
 }
 
 const CardSignature = (props: CardBagPageProps) => {
     const handleSignatureType = (arg: string) => {
         let signature = 'Padrão';
-        let val = 'R$0,00'
+        let val = FormatCurrency(0);
 
         if (props.profileData?.signature?.length < 0 || !props.profileData?.signature) return { signature, val };
 
-        if (arg === 'coffee') {
-            if (props.profileData?.signature?.includes('2c877b34-d743-4bb7-bcef-ada1a0dfb856')) {
+        if (arg === 'cafe') {
+            if (props.profileData?.signature?.includes('cafe_semanal')) {
                 signature = 'Café Semanal';
-            } else {
+                val = FormatCurrency(10);
+            } else if (props.profileData?.signature?.includes('cafe_mensal')) {
                 signature = 'Café Mensal';
+                val = FormatCurrency(15);
+            } else {
+                signature = 'Café Padrão';
+                val = FormatCurrency(0);
             }
         } else {
-            if (props.profileData?.signature?.includes('51ca3271-5b3a-4c63-b1d8-735f86bf57e6')) {
+            if (props.profileData?.signature?.includes('cha_semanal')) {
                 signature = 'Chá Semanal';
-            } else {
+                val = FormatCurrency(10);
+            } else if (props.profileData?.signature?.includes('cha_mensal')) {
                 signature = 'Chá Mensal';
+                val = FormatCurrency(15);
+            } else {
+                signature = 'Chá Padrão';
+                val = FormatCurrency(0);
             }
         }
 

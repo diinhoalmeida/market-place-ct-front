@@ -4,7 +4,7 @@ interface ButtonAttributes extends ButtonHTMLAttributes<HTMLButtonElement> {};
 
 const ButtonConfirm = (props: ButtonAttributes) => {
     return (
-        <button className={props.className}>
+        <button className={props.className} onClick={props.onClick}>
             {props.children}
         </button>
     )

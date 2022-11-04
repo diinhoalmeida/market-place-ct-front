@@ -17,6 +17,7 @@ const MarketPage = () => {
         tea: true
     });
     const [productsData, setProductsData] = useState([]);
+    const [originalState, setOriginalState] = useState([]);
 
     const handleASideFilter = (checked: boolean, type: string) => {
         var filterAside = {...selectFilterAside};
@@ -46,6 +47,7 @@ const MarketPage = () => {
     const handleProdutos = async () => {
         try {
             const produtosData = await axios.get('http://localhost:3000/produtos');
+            setOriginalState(produtosData.data);
             setProductsData(produtosData.data);
         } catch (err) {
             console.log(err);
@@ -55,6 +57,20 @@ const MarketPage = () => {
     useEffect(() => {
         handleProdutos();
     }, [])
+
+    useEffect(() => {
+        if (selectFilterAside.all) {
+            setProductsData(originalState);    
+        } else if (selectFilterAside.tea && selectFilterAside.coffee) {
+            setProductsData(originalState);    
+        } else if (!selectFilterAside.tea && selectFilterAside.coffee) {
+            setProductsData(originalState.filter((item: any) => item.product.name === 'cafe'));    
+        } else if (selectFilterAside.tea && !selectFilterAside.coffee) {
+            setProductsData(originalState.filter((item: any) => item.product.name === 'cha'));    
+        } else if (!selectFilterAside.all) {
+            setProductsData([]);
+        }
+    }, [selectFilterAside])
 
     return (
         <div className="w-screen flex justify-center px-14 min-h-screen">
@@ -115,7 +131,7 @@ const MarketPage = () => {
                                 </CheckBox.Root>
                                 <p>Chá</p>
                             </div>
-                            <select
+                            {/* <select
                                 disabled={!selectFilterAside.tea}
                                 name="tea"
                                 id="tea"
@@ -124,7 +140,7 @@ const MarketPage = () => {
                             >
                                 <option value="todos" className="">Todos</option>
                                 <option value="oi">oi</option>
-                            </select>
+                            </select> */}
                         </div>
                         <div className="flex flex-col gap-2">
                             <div className="flex flex-row items-center gap-2">
@@ -147,7 +163,7 @@ const MarketPage = () => {
                                 </CheckBox.Root>
                                 <p>Café</p>
                             </div>
-                            <select
+                            {/* <select
                                 disabled={!selectFilterAside.coffee}
                                 name="coffee"
                                 id="coffee"
@@ -156,7 +172,7 @@ const MarketPage = () => {
                             >
                                 <option value="todos">Todos</option>
                                 <option value="oi">oi</option>
-                            </select>
+                            </select> */}
                         </div>
                     </aside>
                     <div className="grid grid-cols-2 min-800:grid-cols-3 min-970:grid-cols-4 min-1105:grid-cols-5 gap-4 p-2">

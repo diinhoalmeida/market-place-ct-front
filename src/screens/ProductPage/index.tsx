@@ -172,7 +172,7 @@ const ProductPage = () => {
                             <p>{productData?.region}</p>
                         </div>
                         <div>
-                            <h1 className="text-xl font-bold">Sugestão de Preparação</h1>
+                            <h1 className="text-xl font-bold">Sugestão</h1>
                             <p>{productData?.sugestion}</p>
                         </div>
                     </div>
