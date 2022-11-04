@@ -1,6 +1,6 @@
 import { Check, Heart } from "phosphor-react";
 import * as CheckBox from '@radix-ui/react-checkbox';
-import { CardProduct, Footer, Header } from "../../components";
+import { Assinaturas, CardProduct, Footer, Header } from "../../components";
 import { useContext, useEffect, useState } from "react";
 import { useParams } from 'react-router-dom';
 import axios from "axios";
@@ -23,11 +23,11 @@ export interface ProductDataProps {
 type BaseProducts = {
     id: string;
     baseId: string;
-    name: string;
+    name: "cha" | "cafe";
   }
 
 const ProductPage = () => {
-    const [selectPriceProduct, setSelectPriceProduct] = useState<string>('cha_standard');
+    const [signatureArray, setSignatureArray] = useState<string[]>([]);
     const [productData, setProductData] = useState<ProductDataProps>({} as ProductDataProps);
     const [qtd, setQtd] = useState<string>('1');
     const [priceProduct, setPriceProduct] = useState<string>();
@@ -47,15 +47,18 @@ const ProductPage = () => {
 
     useEffect(() => {
         const getUserId = localStorage.getItem('token');
+        const signatureArray: any = localStorage.getItem('signatureArray');
 
         handleProducts();
         handleProductsData();
 
         if (getUserId) handleProfileData(getUserId);
+        if (signatureArray) setSignatureArray(signatureArray);
     }, [])
 
     useEffect(() => {
         setPriceProduct(FormatCurrency(productData.price * Number(qtd)));
+        console.log(productData);
     }, [productData])
 
     return (                                                                            
@@ -81,72 +84,7 @@ const ProductPage = () => {
                                 </div>
                             </div>
                             <button className="bg-purple-600 rounded-lg py-2 text-white hover:bg-purple-700 hover:hover:scale-[1.05] transition-transform" onClick={() => increaseCartQuantity(productData.id, qtd)}>Adicionar ao Carrinho</button>
-                            <div className="grid grid-rows-3 gap-4">
-                                <div className={`flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] transition-transform`}>
-                                    <div className="flex justify-center items-center w-[15%] border-r border-[rgba(0, 0, 0, 0.16)]">
-                                        <CheckBox.Root 
-                                            disabled
-                                            checked={selectPriceProduct === 'cha_standard'}
-                                            className="w-6 h-6 p-1 rounded-full bg-[#EBEBEB]"
-                                            
-                                        >
-                                            <CheckBox.Indicator>
-                                            <Check 
-                                                className="w-4 h-4 text-emerald-800"
-                                            />
-                                            </CheckBox.Indicator>
-                                        </CheckBox.Root>    
-                                    </div>
-                                    <div>
-                                        <h3>Compra Única</h3>
-                                        <p>{FormatCurrency(productData.price * Number(qtd))}</p>
-                                    </div>
-                                </div>
-                                <div className={`flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] transition-transform`}>
-                                    <div className="flex justify-center items-center w-[15%] border-r border-[rgba(0, 0, 0, 0.16)]">
-                                        <CheckBox.Root 
-                                            disabled
-                                            checked={selectPriceProduct === 'cha_mensal'}
-                                            className="w-6 h-6 p-1 rounded-full bg-[#EBEBEB]"
-                                            
-                                        >
-                                            <CheckBox.Indicator>
-                                            <Check 
-                                                className="w-4 h-4 text-emerald-800"
-                                            />
-                                            </CheckBox.Indicator>
-                                        </CheckBox.Root>    
-                                    </div>
-                                    <div>
-                                        <h3>Chá do Mês</h3>
-                                        <p className="text-sm text-zinc-400 m-0">Assine e economize 15%</p>
-                                        <p className="text-sm text-zinc-400 m-0">Valor cobrado mensalmente</p>
-                                        <p>{FormatCurrency((productData.price * Number(qtd)) - (productData.price * Number(qtd)) * (15/100))}</p>
-                                    </div>
-                                </div>
-                                <div className={`flex flex-row p-3 rounded-lg shadow-box-shadow-card-product-page gap-4 items-center hover:scale-[1.05] transition-transform`}>
-                                    <div className="flex justify-center items-center w-[15%] border-r border-[rgba(0, 0, 0, 0.16)]">
-                                        <CheckBox.Root 
-                                            disabled
-                                            checked={selectPriceProduct === 'cha_semanal'}
-                                            className="w-6 h-6 p-1 rounded-full bg-[#EBEBEB]"
-                                            
-                                        >
-                                            <CheckBox.Indicator>
-                                            <Check 
-                                                className="w-4 h-4 text-emerald-800"
-                                            />
-                                            </CheckBox.Indicator>
-                                        </CheckBox.Root>    
-                                    </div>
-                                    <div>
-                                        <h3>Chá Semanal</h3>
-                                        <p className="text-sm text-zinc-400 m-0">Assine e economize 10%</p>
-                                        <p className="text-sm text-zinc-400 m-0">Valor cobrado semanalmente</p>
-                                        <p>{FormatCurrency((productData.price * Number(qtd)) - (productData.price * Number(qtd)) * (10/100))}</p>
-                                    </div>
-                                </div>
-                            </div>
+                            <Assinaturas signatureArray={signatureArray} type={productData?.product?.name} page={"product_page"}/>
                         </div>
                         <div className="flex flex-col gap-4 grid-in-indications justify-between">
                             <h2 className="text-xl font-bold">Quem viu este produto também comprou</h2>
@@ -172,7 +110,7 @@ const ProductPage = () => {
                             <p>{productData?.region}</p>
                         </div>
                         <div>
-                            <h1 className="text-xl font-bold">Sugestão de Preparação</h1>
+                            <h1 className="text-xl font-bold">Sugestão</h1>
                             <p>{productData?.sugestion}</p>
                         </div>
                     </div>

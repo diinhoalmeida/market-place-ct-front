@@ -50,7 +50,7 @@ const DrawerComponent = (props: DrawerComponentProps) => {
                     if (!itemToMap) return null;
                     return (
                         <div className="grid grid-cols-4 shadow-box-shadow-card-product-page p-1">
-                            <img src={`${itemToMap?.photoUrl}`} alt={`${itemToMap?.name}`} className="w-[70px] h-[70px] rounded-xl"/>
+                            <img src={`${itemToMap?.photoUrl}`} alt={`${itemToMap?.name}`} className="w-[70px] h-[70px] rounded-xl object-contain"/>
                             <div className="flex flex-col justify-center">
                                 <div className="flex flex-row items-baseline gap-1">
                                     <h1 className="text-xl font-bold m-0 line-clamp-1">{itemToMap?.name}</h1>
