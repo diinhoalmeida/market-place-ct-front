@@ -24,7 +24,7 @@ const Header = () => {
         navigate('/');
     }
 
-    const handleProducts = () => {
+    const handleNavigateToProfilePage = () => {
         navigate(`/profilepage/${userId}`)
     }
 
@@ -39,7 +39,7 @@ const Header = () => {
                 <div className=""/>
                 <div className="flex flex-row items-center gap-5 relative">
                     {userOn && 
-                        <button className="appearance-none" onClick={() => handleProducts()}>
+                        <button className="appearance-none" onClick={() => handleNavigateToProfilePage()}>
                             <Star size={20} className="hover:hover:scale-[1.1] transition-transform" />
                         </button>
                     }
