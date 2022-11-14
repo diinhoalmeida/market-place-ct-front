@@ -1,47 +1,91 @@
-## Coffee and Tea DOC 🏫
+<h1 align="center">Coffe and Tea Doc</h1>
+<p align="center"><i>
+Coffe and Tea documentação de versionamento</i></p>
 
-## FOLLOW THIS STEPS ⚠️
+## ****💻 Sobre****
+O site Coffee and Tea é uma aplicação de compra de chás e cafés, podendo também realizar compras por assinatura obtendo desconto em seus produtos. É possível realizar cadastro e também login para acessar as assinaturas e também altera-las.
 
--   Digite no seu terminal estes passos para ter a aplicação rodando em sua máquina.
+## 🚀 Tecnologias
+<p display="inline-block">
+  <img width="48" src="https://github.com/devicons/devicon/blob/master/icons/react/react-original.svg" alt="react-logo"/>
+  <img width="48" src="https://github.com/devicons/devicon/blob/master/icons/typescript/typescript-original.svg" alt="typescript-logo"/>
+  <img width="48" src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-plain.svg" alt="tailwind-logo"/>
+   <img width="48" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667" alt="vite-logo"/>
+   <img width="48" src="https://avatars.githubusercontent.com/u/75042455?s=280&v=4" alt="radix-logo"/>
+</p>
+                                                                                                  
+### Development Tools
+
+<p display="inline-block">
+  <img width="48" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/2048px-Visual_Studio_Code_1.35_icon.svg.png" alt="vscode-logo"/>
+
+## 👨‍💻 Rodando a Aplicação
+
+- Clonando o projeto:
 ```
 $git clone https://github.com/diinhoalmeida/market-place-ct-front.git
+```
+
+- Checando pastas no diretório em questão: 
+```
 $ls
+```
+
+- Entrando na pasta do projeto:
+```
 $cd market-place-ct-front
-$ls
+```
+
+- Istalando depêndencias:
+```
 $npm i
+```
+
+- Iniciando o projeto:
+```
 $npm run dev
 ```
 
-## COFFE AND TEA EXPERIENCE:
+## ****✨ Features****
 
-#### HOME PAGE
+Algumas features que valem a pena destacar:
 
-![](https://live.staticflickr.com/65535/52484184789_a5ec47118c_w.jpg)
+✔ Cadastro e login de usuário;<br />
+✔ Upload de Assinaturas clicando no ícone em forma de e“Meu Perfil”;<br />
+✔ Filtro de produtos, escolha apenas café, apenas chá, ou os dois;<br />
+✔ Visualizar o carrinho de compras clicando no ícone de carrinho;<br />
+✔ Dados salvos em storage, atualize sua página sem perder seus estados;<br />
+✔ Navegação simples, site intuitivo;<br />
 
-#### PRODUTOS
+## Estrutura de Componentes da Aplicação
 
-![](https://live.staticflickr.com/65535/52484184859_86bd3aca8f_w.jpg)
-
-#### DENTRO DO PRODUTO
-
-![](https://live.staticflickr.com/65535/52484462318_f353fcf973_w.jpg)
-
-#### LOGIN DE USUARIO
-
-![](https://live.staticflickr.com/65535/52484388070_7141013724_z.jpg)
-
-#### CADASTRO DE USUARIO
-
-![](https://live.staticflickr.com/65535/52484462398_98aa50c262_z.jpg)
-
-#### ASSINATURAS DO USUARIO
-
-![](https://live.staticflickr.com/65535/52483417782_8469bcb81f_z.jpg)
-
-#### CARRINHO DE COMPRAS
-
-![](https://live.staticflickr.com/65535/52483915126_56a5639c77_w.jpg)
-
-#### PAGINA DE CHECKOUT
-
-![](https://live.staticflickr.com/65535/52484462553_b93a200401.jpg)
+- pages
+    - **BagPage**
+        - `<Header />`
+        - `<CardBagPage />`
+        - `<ButtonConfirm />`
+        - `<Footer />`
+    - **CheckoutPage**
+        - `<Header />`
+        - `<InputForm />`
+        - `<ButtonConfirm />`
+        - `<Footer />`
+    - HomePage
+        - `<Header />`
+        - `<CardProduct />`
+        - `<Footer />`
+    - MarketPage
+        - `<Header />`
+        - `<CardProduct />`
+        - `<Footer />`
+    - ProductPage
+        - `<Header />`
+        - `<Assinaturas />`
+        - `<CardProduct />`
+        - `<Footer />`
+    - ProfilePage
+        - `<Header />`
+        - `<CardSignature />`
+        - `<Footer />`
+        - `<ModalUpdateSignature />`
+        
