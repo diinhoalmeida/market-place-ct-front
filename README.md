@@ -11,6 +11,8 @@ O site Coffee and Tea é uma aplicação de compra de chás e cafés, podendo ta
   <img width="48" src="https://github.com/devicons/devicon/blob/master/icons/typescript/typescript-original.svg" alt="typescript-logo"/>
   <img width="48" src="https://github.com/devicons/devicon/blob/master/icons/tailwindcss/tailwindcss-plain.svg" alt="tailwind-logo"/>
    <img width="48" src="https://camo.githubusercontent.com/61e102d7c605ff91efedb9d7e47c1c4a07cef59d3e1da202fd74f4772122ca4e/68747470733a2f2f766974656a732e6465762f6c6f676f2e737667" alt="vite-logo"/>
+   <img width="48" src="https://github.com/devicons/devicon/blob/master/icons/html5/html5-original-wordmark.svg" alt="html-logo"/>
+  <img width="48" src="https://github.com/devicons/devicon/blob/master/icons/css3/css3-original-wordmark.svg" alt="css-logo"/>
    <img width="48" src="https://avatars.githubusercontent.com/u/75042455?s=280&v=4" alt="radix-logo"/>
 </p>
                                                                                                   
