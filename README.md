@@ -51,7 +51,7 @@ $npm run dev
 Algumas features que valem a pena destacar:
 
 ✔ Cadastro e login de usuário;<br />
-✔ Upload de Assinaturas clicando no ícone em forma de e“Meu Perfil”;<br />
+✔ Upload de Assinaturas clicando no ícone em forma de estrela após logar acessando o “Meu Perfil”;<br />
 ✔ Filtro de produtos, escolha apenas café, apenas chá, ou os dois;<br />
 ✔ Visualizar o carrinho de compras clicando no ícone de carrinho;<br />
 ✔ Dados salvos em storage, atualize sua página sem perder seus estados;<br />
